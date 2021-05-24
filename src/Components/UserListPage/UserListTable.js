@@ -9,9 +9,17 @@ function UserListTable(props) {
     console.log("UserListTable");
     console.log(userList);
 
+    // Remove User
+    function removeUser(id) {
+        console.log("Remove user of id : "+id);
+        LocalStoreHelper.removeUser(id);
+    }
+
     useEffect(() => {
         console.log("UserListTable Component User list Updated...");
       }, [userList]);
+
+
     return (
         <div>
             <h4 id="no-user-table">No User data is added</h4>
@@ -26,8 +34,7 @@ function UserListTable(props) {
                     </tr>
                     {
                         userList.map((user) => {
-                            // console.log(user);
-                            return <UserRowDetails key={user.id} user={user} />
+                            return <UserRowDetails key={user.id} user={user} deleteUser={removeUser} />
                         })
                     }
                 </thead>
