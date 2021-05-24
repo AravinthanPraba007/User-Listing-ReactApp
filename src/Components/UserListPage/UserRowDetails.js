@@ -1,7 +1,6 @@
 import React from 'react';
 
 function UserRowDetails({ user, deleteUser }) {
-    console.log("UserRowDetails");
 
     function handleDeleteUser() {
         deleteUser(user.id);

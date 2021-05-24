@@ -14,7 +14,8 @@ function AddUserForm(props) {
 
     const [userList, setUserList] = useContext(UserListContext);
 
-    function handleAddUser() {
+    function handleAddUser(e) {
+        e.preventDefault();
 
         // Get form values
         const firstName = firstNameInput.current.value;
@@ -38,27 +39,30 @@ function AddUserForm(props) {
 
     }
 
-
     return (
         <div>
-            <form id="user-form" className="mb-3">
+            <form id="user-form" className="mb-3" onSubmit={handleAddUser}>
                 <div className="form-group mb-1">
                     <label htmlFor="firstName">First Name</label>
-                    <input type="text" id="firstName" className="form-control" placeholder="Enter first name" ref={firstNameInput} />
+                    <input type="text" id="firstName" className="form-control" placeholder="Enter first name"
+                        ref={firstNameInput} required pattern="[A-Za-z ]*" />
                 </div>
                 <div className="form-group mb-1">
                     <label htmlFor="lastName">Last Name</label>
-                    <input type="text" id="lastName" className="form-control" placeholder="Enter last name" ref={lastNameInput} />
+                    <input type="text" id="lastName" className="form-control" placeholder="Enter last name"
+                        ref={lastNameInput} required pattern="[A-Za-z ]*" />
                 </div>
                 <div className="form-group mb-1">
                     <label htmlFor="age">Age</label>
-                    <input type="number" id="age" className="form-control" placeholder="Enter age [18-100]" ref={ageInput} />
+                    <input type="number" id="age" className="form-control" placeholder="Enter age [18-100]"
+                        ref={ageInput} required min="18" max="100" />
                 </div>
                 <div className="form-group mb-1">
                     <label htmlFor="email">Email</label>
-                    <input type="email" id="email" placeholder="Enter Email Id" className="form-control" ref={emailInput} />
+                    <input type="email" id="email" placeholder="Enter Email Id" className="form-control"
+                        ref={emailInput} required />
                 </div>
-                <button type="button" className="btn btn-primary" onClick={handleAddUser}>Add user</button>
+                <input type="submit" value="Add User" className="btn btn-primary" />
             </form>
         </div>
     );
