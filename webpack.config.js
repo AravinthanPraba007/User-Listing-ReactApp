@@ -18,11 +18,11 @@ module.exports = {
         exclude: /node_modules/,
         use: ['babel-loader']
       },
-      { 
+      {
         test: /\.less$/,
-        use: [ 
+        use: [
           'style-loader',
-          'css-loader', 
+          'css-loader',
           'less-loader',
         ],
       },
@@ -30,7 +30,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template:  path.resolve('./src/index.html'),
+      template: path.resolve('./src/index.html'),
     }),
   ]
 };

@@ -1,4 +1,4 @@
-import React,{ useState, createContext} from "react";
+import React, { useState, createContext } from "react";
 import LocalStoreHelper from '../Helper/LocalStoreHelper';
 
 export const UserListContext = createContext();
@@ -9,5 +9,5 @@ export const UserListProvider = props => {
         <UserListContext.Provider value={[userList, setUserList]}>
             {props.children}
         </UserListContext.Provider>
-    ); 
+    );
 }

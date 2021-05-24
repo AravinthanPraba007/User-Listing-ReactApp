@@ -3,7 +3,7 @@ import { useRef, useContext } from "react";
 import LocalStoreHelper from '../../Helper/LocalStoreHelper';
 import User from '../../Helper/User';
 import { v4 as uuidv4 } from 'uuid';
-import {UserListContext} from './../../Context/UserListContext';
+import { UserListContext } from './../../Context/UserListContext';
 
 function AddUserForm(props) {
 
@@ -15,8 +15,7 @@ function AddUserForm(props) {
     const [userList, setUserList] = useContext(UserListContext);
 
     function handleAddUser() {
-        console.log("handleAddUser triggered");
-        
+
         // Get form values
         const firstName = firstNameInput.current.value;
         const lastName = lastNameInput.current.value;
