@@ -1,8 +1,9 @@
 import React from 'react';
-import { useRef } from "react";
+import { useRef, useContext } from "react";
 import LocalStoreHelper from '../../Helper/LocalStoreHelper';
 import User from '../../Helper/User';
 import { v4 as uuidv4 } from 'uuid';
+import {UserListContext} from './../../Context/UserListContext';
 
 function AddUserForm(props) {
 
@@ -10,6 +11,8 @@ function AddUserForm(props) {
     const lastNameInput = useRef();
     const ageInput = useRef();
     const emailInput = useRef();
+
+    const [userList, setUserList] = useContext(UserListContext);
 
     function handleAddUser() {
         console.log("handleAddUser triggered");
@@ -25,6 +28,8 @@ function AddUserForm(props) {
 
         // Add user to Store
         LocalStoreHelper.addUser(user);
+
+        setUserList(LocalStoreHelper.getUsers());
 
         // Clear Feilds
         firstNameInput.current.value = "";

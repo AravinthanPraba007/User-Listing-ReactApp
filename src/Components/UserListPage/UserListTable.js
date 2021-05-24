@@ -1,23 +1,24 @@
-import React, { useEffect } from 'react';
+import React, { useContext } from 'react';
 import UserRowDetails from './UserRowDetails';
 import LocalStoreHelper from '../../Helper/LocalStoreHelper';
+import {UserListContext} from './../../Context/UserListContext';
 
 function UserListTable(props) {
-    let userList = [];
-    // Get user list
-    userList = LocalStoreHelper.getUsers();
-    console.log("UserListTable");
-    console.log(userList);
+    // let userList = [];
+    // // Get user list
+    // userList = LocalStoreHelper.getUsers();
+    // console.log("UserListTable");
+    // console.log(userList);
+
+    const [userList, setUserList] = useContext(UserListContext);
 
     // Remove User
     function removeUser(id) {
         console.log("Remove user of id : "+id);
         LocalStoreHelper.removeUser(id);
+        setUserList(LocalStoreHelper.getUsers());
     }
 
-    useEffect(() => {
-        console.log("UserListTable Component User list Updated...");
-      }, [userList]);
 
 
     return (
