@@ -2,7 +2,9 @@ import React from 'react';
 
 function UserRowDetails(user) {
     console.log("UserRowDetails");
-    console.log(user);
+    // console.log(user);
+
+    
     return (
         <tr>
             <td>{user.user.firstName}</td>

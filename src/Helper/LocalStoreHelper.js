@@ -16,10 +16,10 @@ export default class LocalStoreHelper {
         localStorage.setItem('users', JSON.stringify(users));
     }
 
-    static removeUser(removeUserFirstName) {
+    static removeUser(removeUserId) {
         const users = LocalStoreHelper.getUsers();
         users.forEach((user, index) => {
-            if (user.firstName === removeUserFirstName) {
+            if (user.id === removeUserId) {
                 users.splice(index, 1);
             }
         });

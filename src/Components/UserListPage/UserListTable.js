@@ -1,13 +1,17 @@
-import React from 'react';
-import LocalStoreHelper from '../Helper/LocalStoreHelper';
-import User from '../Helper/User';
+import React, { useEffect } from 'react';
 import UserRowDetails from './UserRowDetails';
+import LocalStoreHelper from '../../Helper/LocalStoreHelper';
 
 function UserListTable(props) {
-    let users = [];
+    let userList = [];
     // Get user list
-    users = LocalStoreHelper.getUsers();
+    userList = LocalStoreHelper.getUsers();
+    console.log("UserListTable");
+    console.log(userList);
 
+    useEffect(() => {
+        console.log("UserListTable Component User list Updated...");
+      }, [userList]);
     return (
         <div>
             <h4 id="no-user-table">No User data is added</h4>
@@ -21,9 +25,9 @@ function UserListTable(props) {
                         <th></th>
                     </tr>
                     {
-                        users.map((user, index) => {
-                            console.log(user);
-                            return <UserRowDetails key={index} user={user} />
+                        userList.map((user) => {
+                            // console.log(user);
+                            return <UserRowDetails key={user.id} user={user} />
                         })
                     }
                 </thead>

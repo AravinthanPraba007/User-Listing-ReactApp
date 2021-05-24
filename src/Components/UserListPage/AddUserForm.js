@@ -1,7 +1,8 @@
 import React from 'react';
 import { useRef } from "react";
-import LocalStoreHelper from '../Helper/LocalStoreHelper';
-import User from '../Helper/User';
+import LocalStoreHelper from '../../Helper/LocalStoreHelper';
+import User from '../../Helper/User';
+import { v4 as uuidv4 } from 'uuid';
 
 function AddUserForm(props) {
 
@@ -20,7 +21,7 @@ function AddUserForm(props) {
         const email = emailInput.current.value;
 
         // Instatiate a user
-        const user = new User(firstName, lastName, age, email);
+        const user = new User(uuidv4(), firstName, lastName, age, email);
 
         // Add user to Store
         LocalStoreHelper.addUser(user);

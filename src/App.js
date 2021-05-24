@@ -1,14 +1,9 @@
 import React from "react";
-import AddUserForm from "./Components/addUserForm";
-import UserListTable from "./Components/UserListTable";
+import UserListPage from "./Components/UserListPage/UserListPage";
 
 function App() {
         return (
-            <>
-            <h1 className="header">Hello World!!!</h1>
-            <AddUserForm></AddUserForm>
-            <UserListTable></UserListTable>
-            </>
+            <UserListPage/>
         );
 }
 export default App;
