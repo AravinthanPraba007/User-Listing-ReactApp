@@ -1,27 +1,34 @@
 import React from 'react';
-import { useRef, useContext } from "react";
+import { useRef, useContext, useState } from "react";
 import LocalStoreHelper from '../../Helper/LocalStoreHelper';
 import User from '../../Helper/User';
 import { v4 as uuidv4 } from 'uuid';
 import { UserListContext } from './../../Context/UserListContext';
+import InputFeild from '../InputFeild/InputFeild';
 
 function AddUserForm(props) {
 
-    const firstNameInput = useRef();
-    const lastNameInput = useRef();
-    const ageInput = useRef();
-    const emailInput = useRef();
+    const initalInputFeild = { firstName: '',lastName: '',age: '', email: ''}
+
+    const [inputFeild, setInputFeild] = useState(initalInputFeild);
 
     const [userList, setUserList] = useContext(UserListContext);
+
+    function handleInputFeildValueChange(key, value) {
+        setInputFeild((prevState) => {
+            return { ...prevState, [key]: value }
+        });
+
+    }
 
     function handleAddUser(e) {
         e.preventDefault();
 
         // Get form values
-        const firstName = firstNameInput.current.value;
-        const lastName = lastNameInput.current.value;
-        const age = ageInput.current.value;
-        const email = emailInput.current.value;
+        const firstName = inputFeild.firstName;
+        const lastName = inputFeild.lastName;
+        const age = inputFeild.age;
+        const email = inputFeild.email;
 
         // Instatiate a user
         const user = new User(uuidv4(), firstName, lastName, age, email);
@@ -32,35 +39,32 @@ function AddUserForm(props) {
         setUserList(LocalStoreHelper.getUsers());
 
         // Clear Feilds
-        firstNameInput.current.value = "";
-        lastNameInput.current.value = "";
-        ageInput.current.value = "";
-        emailInput.current.value = "";
+        setInputFeild(initalInputFeild);
 
     }
 
     return (
         <div>
             <form id="user-form" className="mb-3" onSubmit={handleAddUser}>
+
                 <div className="form-group mb-1">
-                    <label htmlFor="firstName">First Name</label>
-                    <input type="text" id="firstName" className="form-control" placeholder="Enter first name"
-                        ref={firstNameInput} required pattern="[A-Za-z ]*" />
+                    <InputFeild labelName="firstName" type="text" id="firstName" placeholder="Enter first name" className="form-control"
+                       value={inputFeild.firstName} onchange={handleInputFeildValueChange}></InputFeild>
                 </div>
+
                 <div className="form-group mb-1">
-                    <label htmlFor="lastName">Last Name</label>
-                    <input type="text" id="lastName" className="form-control" placeholder="Enter last name"
-                        ref={lastNameInput} required pattern="[A-Za-z ]*" />
+                    <InputFeild labelName="lastName" type="text" id="lastName" placeholder="Enter last name" className="form-control"
+                        value={inputFeild.lastName} onchange={handleInputFeildValueChange}></InputFeild>
                 </div>
+
                 <div className="form-group mb-1">
-                    <label htmlFor="age">Age</label>
-                    <input type="number" id="age" className="form-control" placeholder="Enter age [18-100]"
-                        ref={ageInput} required min="18" max="100" />
+                    <InputFeild labelName="age" type="number" id="age" placeholder="Enter age [18-100]" className="form-control"
+                        value={inputFeild.age} onchange={handleInputFeildValueChange}></InputFeild>
                 </div>
+
                 <div className="form-group mb-1">
-                    <label htmlFor="email">Email</label>
-                    <input type="email" id="email" placeholder="Enter Email Id" className="form-control"
-                        ref={emailInput} required />
+                    <InputFeild labelName="email" type="email" id="email" placeholder="Enter Email Id" className="form-control"
+                        value={inputFeild.email} onchange={handleInputFeildValueChange}></InputFeild>
                 </div>
                 <input type="submit" value="Add User" className="btn btn-primary" />
             </form>
