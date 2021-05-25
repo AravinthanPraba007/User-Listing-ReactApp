@@ -4,7 +4,7 @@ import LocalStoreHelper from '../../Helper/LocalStoreHelper';
 import User from '../../Helper/User';
 import { v4 as uuidv4 } from 'uuid';
 import { UserListContext } from './../../Context/UserListContext';
-import InputFeild from '../InputFeild/InputFeild';
+import InputField from '../InputField/InputField';
 
 function AddUserForm(props) {
 
@@ -48,23 +48,23 @@ function AddUserForm(props) {
             <form id="user-form" className="mb-3" onSubmit={handleAddUser}>
 
                 <div className="form-group mb-1">
-                    <InputFeild labelName="firstName" type="text" id="firstName" placeholder="Enter first name" className="form-control"
-                       value={inputFeild.firstName} onchange={handleInputFeildValueChange}></InputFeild>
+                    <InputField labelName="firstName" type="text" id="firstName" placeholder="Enter first name" className="form-control"
+                       value={inputFeild.firstName} onchange={handleInputFeildValueChange}></InputField>
                 </div>
 
                 <div className="form-group mb-1">
-                    <InputFeild labelName="lastName" type="text" id="lastName" placeholder="Enter last name" className="form-control"
-                        value={inputFeild.lastName} onchange={handleInputFeildValueChange}></InputFeild>
+                    <InputField labelName="lastName" type="text" id="lastName" placeholder="Enter last name" className="form-control"
+                        value={inputFeild.lastName} onchange={handleInputFeildValueChange}></InputField>
                 </div>
 
                 <div className="form-group mb-1">
-                    <InputFeild labelName="age" type="number" id="age" placeholder="Enter age [18-100]" className="form-control"
-                        value={inputFeild.age} onchange={handleInputFeildValueChange}></InputFeild>
+                    <InputField labelName="age" type="number" id="age" placeholder="Enter age [18-100]" className="form-control"
+                        value={inputFeild.age} onchange={handleInputFeildValueChange}></InputField>
                 </div>
 
                 <div className="form-group mb-1">
-                    <InputFeild labelName="email" type="email" id="email" placeholder="Enter Email Id" className="form-control"
-                        value={inputFeild.email} onchange={handleInputFeildValueChange}></InputFeild>
+                    <InputField labelName="email" type="email" id="email" placeholder="Enter Email Id" className="form-control"
+                        value={inputFeild.email} onchange={handleInputFeildValueChange}></InputField>
                 </div>
                 <input type="submit" value="Add User" className="btn btn-primary" />
             </form>

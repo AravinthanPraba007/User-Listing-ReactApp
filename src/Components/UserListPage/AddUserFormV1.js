@@ -4,7 +4,7 @@ import LocalStoreHelper from '../../Helper/LocalStoreHelper';
 import User from '../../Helper/User';
 import { v4 as uuidv4 } from 'uuid';
 import { UserListContext } from '../../Context/UserListContext';
-import InputFeild from '../InputFeild/InputFeild';
+import InputFeild from '../InputField/InputField';
 
 function AddUserFormV1(props) {
 
